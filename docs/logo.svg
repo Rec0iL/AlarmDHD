@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 24 110 110" width="160" height="160" role="img" aria-label="AlarmDHD logo: a sleepy sloth alarm clock">
+  <rect x="30" y="24" width="110" height="110" rx="25" fill="#2F4A3E"/>
+  <g transform="translate(85 79) scale(0.6) translate(-85 -85)" fill="none" stroke-linecap="round">
+    <path stroke="#D9C2A3" stroke-width="7" d="M58,142L48,156M112,142L122,156"/>
+    <path fill="#FFB454" d="M31,44a17,17 0 1,0 34,0a17,17 0 1,0 -34,0z"/>
+    <path fill="#FFB454" d="M105,44a17,17 0 1,0 34,0a17,17 0 1,0 -34,0z"/>
+    <path fill="#A98C6E" d="M31,92a54,54 0 1,0 108,0a54,54 0 1,0 -108,0z"/>
+    <path fill="#EBD9BF" d="M43,100a42,35 0 1,0 84,0a42,35 0 1,0 -84,0z"/>
+    <path fill="#5C4433" transform="rotate(-22 65 90)" d="M51,90a14,9 0 1,0 28,0a14,9 0 1,0 -28,0z"/>
+    <path fill="#5C4433" transform="rotate(22 105 90)" d="M91,90a14,9 0 1,0 28,0a14,9 0 1,0 -28,0z"/>
+    <path stroke="#F3E6D2" stroke-width="3" d="M59,91q6,5 12,0M99,91q6,5 12,0"/>
+    <path fill="#3D2B1F" d="M78,103a7,5 0 1,0 14,0a7,5 0 1,0 -14,0z"/>
+    <path stroke="#3D2B1F" stroke-width="3.5" d="M73,113q12,10 24,0"/>
+  </g>
+</svg>

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AlarmDHD</string>
+
+    <!-- Shared actions -->
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_back">Back</string>
+    <string name="action_ok">OK</string>
+    <string name="action_fix">Fix</string>
+    <string name="action_undo">Undo</string>
+    <string name="action_less">Less</string>
+    <string name="action_more">More</string>
+
+    <!-- Notification channels -->
+    <string name="channel_ring">Ringing alarms</string>
+    <string name="channel_progress">Next alarm</string>
+
+    <!-- Time -->
+    <string name="until_now">now</string>
+    <string name="until_days">in %1$d days</string>
+    <string name="until_minutes">in %1$d min</string>
+    <string name="until_hours">in %1$d h</string>
+    <string name="until_hours_minutes">in %1$d h %2$d min</string>
+    <string name="day_today">Today</string>
+    <string name="day_tomorrow">Tomorrow</string>
+
+    <!-- Ring screen -->
+    <string name="ring_snooze">Snooze</string>
+    <string name="ring_snooze_minutes">Snooze %1$d min</string>
+    <string name="ring_dismiss">Dismiss</string>
+    <string name="ring_im_up">I\'m up</string>
+    <string name="ring_test">Test alarm</string>
+    <string name="ring_snoozed">Snoozed alarm</string>
+    <string name="ring_position_of">Alarm %1$d of %2$d</string>
+    <string name="ring_position">Alarm %1$d</string>
+    <string name="ring_now_playing">Playing: %1$s</string>
+
+    <!-- Progress -->
+    <string name="progress_next">Next alarm %1$s</string>
+    <string name="progress_running">Alarms are running</string>
+    <string name="progress_no_end">No end time</string>
+    <plurals name="progress_more">
+        <item quantity="one">%1$d more</item>
+        <item quantity="other">%1$d more</item>
+    </plurals>
+    <plurals name="progress_snoozed">
+        <item quantity="one">%1$d snoozed</item>
+        <item quantity="other">%1$d snoozed</item>
+    </plurals>
+
+    <!-- Game -->
+    <string name="game_bubble_pop">Bubble Pop</string>
+    <string name="game_bubble">Bubble</string>
+    <string name="game_hint">Finish this to stop today\'s alarms.</string>
+    <string name="game_leave">Back to the alarm</string>
+    <string name="game_notification_title">Alarm paused</string>
+    <string name="game_notification_text">Finish the game to stop today\'s alarms.</string>
+    <string name="game_won_title">Good morning!</string>
+    <string name="game_won_text">Alarms are off for today.</string>
+    <string name="game_won_test">That\'s how it works. Your real alarms weren\'t touched.</string>
+    <string name="game_won_close">Start the day</string>
+    <plurals name="game_bubbles_left">
+        <item quantity="one">%1$d bubble left</item>
+        <item quantity="other">%1$d bubbles left</item>
+    </plurals>
+
+    <string name="game_foggy_window">Wipe the Foggy Window</string>
+    <string name="game_fog_status">Wipe the fog away: %1$d%% clear</string>
+    <string name="game_fog_done">There\'s the sunrise!</string>
+    <string name="game_fog_window">Foggy window</string>
+    <string name="game_fog_wipe">Wipe</string>
+
+    <string name="game_pour_coffee">Pour the Coffee</string>
+    <string name="game_coffee_status">Hold to pour: mug %1$d%% full</string>
+    <string name="game_coffee_done">Fresh coffee!</string>
+    <string name="game_coffee_pot">Coffee pot and mug</string>
+    <string name="game_coffee_pour">Pour</string>
+
+    <string name="game_wake_sheep">Wake the Sheep</string>
+    <plurals name="game_sheep_status">
+        <item quantity="one">Tap each sheep twice: %1$d of %2$d awake</item>
+        <item quantity="other">Tap each sheep twice: %1$d of %2$d awake</item>
+    </plurals>
+    <string name="game_sheep_done">Everyone\'s up!</string>
+    <string name="game_sheep">Sheep %1$d</string>
+    <string name="game_sheep_asleep">Fast asleep</string>
+    <string name="game_sheep_drowsy">Drowsy</string>
+    <string name="game_sheep_awake">Awake</string>
+    <string name="game_sheep_nudge">Nudge</string>
+
+    <string name="game_water_plant">Water the Plant</string>
+    <string name="game_plant_status">Hold the can over the plant: %1$d%% grown</string>
+    <string name="game_plant_done">It\'s blooming!</string>
+    <string name="game_plant_description">Plant in a pot, with a watering can</string>
+    <string name="game_plant_water">Water</string>
+
+    <string name="game_connect_stars">Connect the Stars</string>
+    <string name="game_stars_status">Tap the stars in order: %1$d of %2$d</string>
+    <string name="game_stars_done">You drew %1$s!</string>
+    <string name="game_stars_heart">a heart</string>
+    <string name="game_stars_dipper">the Big Dipper</string>
+    <string name="game_stars_crown">a crown</string>
+    <string name="game_star">Star %1$d of %2$d</string>
+    <string name="game_star_connected">Connected</string>
+    <string name="game_star_next">Next</string>
+    <string name="game_star_later">Not yet</string>
+
+    <string name="game_memory_pairs">Memory Pairs</string>
+    <plurals name="game_memory_status">
+        <item quantity="one">Find the pairs: %1$d of %2$d found</item>
+        <item quantity="other">Find the pairs: %1$d of %2$d found</item>
+    </plurals>
+    <string name="game_memory_done">All pairs found!</string>
+    <string name="game_memory_card">Card %1$d</string>
+    <string name="game_memory_face_down">Face down</string>
+    <string name="game_memory_matched">%1$s, matched</string>
+    <string name="game_memory_sun">Sun</string>
+    <string name="game_memory_moon">Moon</string>
+    <string name="game_memory_coffee">Coffee</string>
+    <string name="game_memory_sheep">Sheep</string>
+    <string name="game_memory_plant">Seedling</string>
+    <string name="game_memory_balloon">Balloon</string>
+    <string name="game_memory_sock">Socks</string>
+
+    <string name="game_pump_balloon">Pump the Balloon</string>
+    <string name="game_pump_status">Tap to pump: %1$d of %2$d</string>
+    <string name="game_pump_done">Up it goes!</string>
+    <string name="game_pump_description">Balloon on a pump</string>
+    <string name="game_pump_action">Pump</string>
+
+    <string name="game_sock_drawer">Sock Drawer</string>
+    <plurals name="game_sock_status">
+        <item quantity="one">Drag each sock to its drawer: %1$d left</item>
+        <item quantity="other">Drag each sock to its drawer: %1$d left</item>
+    </plurals>
+    <string name="game_sock_done">All put away!</string>
+    <string name="game_sock">%1$s sock</string>
+    <string name="game_drawer">%1$s drawer, holding %2$d of %3$d</string>
+    <string name="game_sock_put_away">Put in its drawer</string>
+    <string name="game_sock_orange">Orange striped</string>
+    <string name="game_sock_blue">Blue spotted</string>
+    <string name="game_sock_purple">Purple</string>
+
+    <string name="game_paint_sky">Paint the Sky</string>
+    <string name="game_paint_status">Paint the whole sky: %1$d%% done</string>
+    <string name="game_paint_done">What a sky!</string>
+    <string name="game_paint_description">Night sky</string>
+    <string name="game_paint_action">Paint</string>
+    <string name="game_paint_orange">Orange paint</string>
+    <string name="game_paint_coral">Coral paint</string>
+    <string name="game_paint_yellow">Yellow paint</string>
+    <string name="game_paint_blue">Blue paint</string>
+    <string name="game_paint_violet">Violet paint</string>
+
+    <!-- Home -->
+    <string name="home_new">New alarm run</string>
+    <string name="home_running">Alarms are running</string>
+    <string name="home_next_in">Next %1$s, %2$s</string>
+    <string name="home_stop_today">I\'m up: stop for today</string>
+    <string name="home_next_alarm">Next alarm</string>
+    <string name="home_empty_title">No alarms yet</string>
+    <string name="home_empty_text">Pick a start time. Alarms ring every few minutes until your end time, or until you finish a small game. Every snooze adds one more on top.</string>
+    <string name="home_locked">Running now. Win the game to stop it.</string>
+    <string name="home_skip">Skip %1$s</string>
+    <string name="home_skipped">Skipping %1$s</string>
+    <plurals name="home_problems">
+        <item quantity="one">%1$d thing could stop your alarms from ringing</item>
+        <item quantity="other">%1$d things could stop your alarms from ringing</item>
+    </plurals>
+
+    <!-- Series -->
+    <string name="series_range">%1$s – %2$s</string>
+    <string name="series_range_open">%1$s, no end</string>
+    <string name="series_every">every %1$d min</string>
+    <string name="series_snooze">snooze %1$d min</string>
+    <string name="series_once">Once</string>
+    <plurals name="series_alarms">
+        <item quantity="one">%1$d alarm</item>
+        <item quantity="other">%1$d alarms</item>
+    </plurals>
+
+    <!-- Editor -->
+    <string name="editor_new">New alarm run</string>
+    <string name="editor_edit">Edit alarm run</string>
+    <string name="editor_locked">These alarms are running right now. Win the game to change their times, or to turn them off or delete them.</string>
+    <string name="editor_start">Start</string>
+    <string name="editor_end">End</string>
+    <string name="editor_open_end">Open</string>
+    <string name="editor_no_end">No end time</string>
+    <string name="editor_no_end_hint">Keeps ringing until you win the game, for up to 12 hours.</string>
+    <string name="editor_interval">Ring every</string>
+    <string name="editor_snooze">Snooze for</string>
+    <string name="editor_minutes">%1$d min</string>
+    <string name="editor_preview_open">Keeps going until you win the game</string>
+    <string name="editor_preview_snooze">Snoozing adds an extra alarm %1$d min later, on top of these.</string>
+    <string name="editor_days">Days</string>
+    <string name="editor_days_once">No days selected: rings once, then turns itself off.</string>
+    <string name="editor_days_repeat">Repeats every week on these days.</string>
+    <string name="editor_ringing">Ringing</string>
+    <string name="editor_sound">Sound</string>
+    <string name="editor_vibrate">Vibrate</string>
+    <string name="editor_gradual_volume">Get louder gradually</string>
+    <string name="editor_gradual_volume_hint">Each alarm starts quiet and reaches full volume after about 30 seconds.</string>
+    <string name="editor_ring_length">Each alarm rings for</string>
+    <string name="editor_name">Name (optional)</string>
+    <string name="editor_delete_title">Delete this alarm run?</string>
+    <plurals name="editor_preview_count">
+        <item quantity="one">%1$d alarm</item>
+        <item quantity="other">%1$d alarms</item>
+    </plurals>
+
+    <!-- Sound -->
+    <string name="sound_title">Alarm sound</string>
+    <string name="sound_system">System alarm tone</string>
+    <string name="sound_run_default">Default from Settings</string>
+    <string name="sound_run_default_title">Default: %1$s</string>
+    <string name="sound_bundled">Backup alarm tone</string>
+    <string name="sound_tone">Alarm tone</string>
+    <string name="sound_file">Any audio file</string>
+    <string name="sound_your_music">Your music</string>
+    <string name="sound_add_folder">Add music folder</string>
+    <string name="sound_add_folder_hint">Add a folder like Music. The app finds your songs and .m3u playlists, and plays them at alarm volume.</string>
+    <string name="sound_tab_songs">Song</string>
+    <string name="sound_tab_playlists">Playlist</string>
+    <string name="sound_tab_folders">Random</string>
+    <string name="sound_search">Search %1$d songs</string>
+    <string name="sound_no_playlists">No .m3u playlists found in your music folders.</string>
+    <string name="sound_playlist_found">%1$d of %2$d tracks found</string>
+    <string name="sound_shuffle">Shuffle</string>
+    <string name="sound_picked">Your own playlist</string>
+    <string name="sound_picked_hint">Pick songs from your music, no .m3u needed</string>
+    <string name="sound_pick_title">Pick songs</string>
+    <string name="sound_pick_missing">No longer found in your music</string>
+    <plurals name="sound_picked_title">
+        <item quantity="one">Your playlist, %1$d song</item>
+        <item quantity="other">Your playlist, %1$d songs</item>
+    </plurals>
+    <string name="sound_all_music">All my music</string>
+    <string name="sound_test">Test</string>
+    <string name="sound_test_stop">Stop</string>
+    <string name="sound_preview_play">Play %1$s</string>
+    <string name="sound_preview_stop">Stop %1$s</string>
+    <string name="sound_preview_failed">Couldn\'t play this song.</string>
+    <string name="sound_test_silent">Nothing could be played.</string>
+    <string name="sound_test_fallback">Couldn\'t play this. Playing %1$s instead.</string>
+    <string name="sound_test_skipped">Skipped a broken song. Playing: %1$s</string>
+    <string name="sound_issue_empty">Your chosen sound couldn\'t be found, so a backup tone played.</string>
+    <string name="sound_issue_fallback">Couldn\'t play \"%1$s\", so a backup tone played.</string>
+    <string name="sound_issue_skipped">Couldn\'t play \"%1$s\", so it was skipped.</string>
+    <plurals name="sound_song_count">
+        <item quantity="one">%1$d song</item>
+        <item quantity="other">%1$d songs</item>
+    </plurals>
+
+    <!-- Setup checks -->
+    <string name="check_notifications">Notifications</string>
+    <string name="check_notifications_why">Android shows the ring screen through a notification. Without this, your alarm can\'t appear on the lock screen.</string>
+    <string name="check_notifications_action">Allow notifications</string>
+    <string name="check_full_screen">Full-screen alarms</string>
+    <string name="check_full_screen_why">This lets the alarm take over the screen when your phone is locked, instead of just showing a small notification.</string>
+    <string name="check_full_screen_action">Open settings</string>
+    <string name="check_over_apps">Show over other apps</string>
+    <string name="check_over_apps_why">This lets the alarm fill the screen while you\'re using your phone too. Without it, you only get a small banner at the top. Find AlarmDHD in the list and turn it on.</string>
+    <string name="check_over_apps_action">Open settings</string>
+    <string name="check_over_apps_restricted">Switch greyed out? Android blocks this for apps that didn\'t come from an app store. Tap the switch once, then come back here and open App info. In its ⋮ menu, choose Allow restricted settings, then try the switch again.</string>
+    <string name="check_over_apps_app_info">Open App info</string>
+    <string name="check_exact_alarm">Exact alarms</string>
+    <string name="check_exact_alarm_why">Without this, Android may delay your alarms by several minutes.</string>
+    <string name="check_exact_alarm_action">Open settings</string>
+    <string name="check_battery">Battery optimisation</string>
+    <string name="check_battery_why">Battery saving can stop an alarm app from running overnight. Letting this one run freely uses almost no extra battery, because it sleeps until an alarm is due.</string>
+    <string name="check_battery_action">Allow</string>
+    <string name="check_volume">Alarm volume</string>
+    <string name="check_volume_why">Your alarm volume is quite low. Alarm volume is separate from your media and ringtone volume.</string>
+    <string name="check_volume_action">Set volume</string>
+
+    <!-- Setup wizard -->
+    <string name="setup_welcome_title">Welcome</string>
+    <string name="setup_welcome_text">This alarm is made for people who take a while to wake up.</string>
+    <string name="setup_welcome_points">• You pick a start time, and an end time if you want one.\n\n• Alarms ring every few minutes, without you setting each one.\n\n• Every snooze adds one more alarm on top. It never pushes the others back.\n\n• A small, unlosable game turns everything off for the day.</string>
+    <string name="setup_start">Set it up</string>
+    <string name="setup_disclaimer_title">One honest thing</string>
+    <string name="setup_disclaimer_accept">I understand and agree</string>
+    <string name="disclaimer_title">No guarantees</string>
+    <string name="disclaimer_text">AlarmDHD is provided as is, without any warranty. Alarms can fail because of a bug, a phone setting, an update, a flat battery or how the app was set up. You use it at your own risk.\n\nTo the extent the law allows, the developer is not liable for you oversleeping or for anything that follows from it, such as being late or missing an appointment, a job or a flight, whether it was caused by user error or a bug.\n\nIf something really matters, set a second alarm on another device.</string>
+    <string name="setup_continue">Continue</string>
+    <string name="setup_skip">Skip for now</string>
+    <string name="setup_skip_music">Skip, use alarm tones</string>
+    <string name="setup_finish">Done</string>
+    <string name="setup_music_title">Wake up to your music</string>
+    <string name="setup_music_text">Optional. Add your music folder to wake up to a song, an .m3u playlist or a random track. If a song ever can\'t be played, a backup tone rings instead.</string>
+    <string name="setup_test_title">Try a real alarm</string>
+    <string name="setup_test_text">The only way to be sure is to hear it. It rings in 10 seconds, so you\'ll have time to lock your phone.</string>
+    <string name="setup_test_started">Lock your phone now. It should ring within 10 seconds and show over the lock screen. Press I\'m up and finish the game to end the test.</string>
+    <string name="setup_test_action">Ring in 10 seconds</string>
+    <string name="setup_done_title">You\'re all set</string>
+    <string name="setup_done_text">Everything your alarms need is in place.</string>
+    <string name="setup_done_issues_title">Almost there</string>
+    <string name="setup_done_issues_text">Something below could still stop an alarm from ringing. You can fix it any time from the home screen or settings.</string>
+
+    <!-- Widget -->
+    <string name="widget_description">Your next alarm, and a way to stop for today while alarms are running.</string>
+    <string name="widget_no_alarm">No alarm set</string>
+    <string name="widget_stop_today">Stop for today</string>
+    <string name="widget_sample_time" translatable="false">7:00</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_check_setup">Check setup</string>
+    <string name="settings_check_setup_hint">Permissions, volume, and a test alarm</string>
+    <string name="settings_test">Test alarm</string>
+    <string name="settings_test_hint">Rings in 10 seconds, so you can lock your phone first</string>
+    <string name="settings_test_started">Rings in 10 seconds. Lock your phone now.</string>
+    <string name="settings_defaults">Defaults</string>
+    <string name="settings_default_sound">Default alarm sound</string>
+    <string name="settings_run_length">New runs last</string>
+    <string name="settings_run_length_hint">When you set a new run\'s start, its end is set this long after it. You can still change the end.</string>
+    <string name="settings_music">Music folders</string>
+    <string name="settings_scanning">Scanning…</string>
+    <string name="settings_rescan">Scan again</string>
+    <string name="settings_remove_folder">Remove folder</string>
+    <string name="settings_support">Support</string>
+    <string name="settings_support_text">If this gets you out of bed in the morning, you can buy me a coffee.</string>
+    <string name="settings_kofi">Support me on Ko-fi</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version">Version %1$s. The app doesn\'t update itself, so new versions are on GitHub.</string>
+    <string name="settings_releases">See releases on GitHub</string>
+    <plurals name="settings_playlists">
+        <item quantity="one">%1$d playlist</item>
+        <item quantity="other">%1$d playlists</item>
+    </plurals>
+</resources>

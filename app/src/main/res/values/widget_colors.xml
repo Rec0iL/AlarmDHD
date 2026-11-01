@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copies of AlarmColors in ui/Theme.kt, because a widget's layout can't read Compose colors. -->
+<resources>
+    <color name="widget_surface">#1B1E28</color>
+    <color name="widget_surface_running">#4A3214</color>
+    <color name="widget_amber">#FFB454</color>
+    <color name="widget_on_amber">#2B1800</color>
+    <color name="widget_text">#F1F2F6</color>
+    <color name="widget_text_dim">#B9BDCB</color>
+</resources>
