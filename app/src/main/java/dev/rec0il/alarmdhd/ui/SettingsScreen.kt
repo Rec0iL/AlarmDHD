@@ -25,6 +25,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -61,6 +62,9 @@ fun SettingsScreen(
     runMinutes: Int,
     defaultSound: SoundSource,
     onRunMinutesChange: (Int) -> Unit,
+    gamesEnabled: Boolean,
+    gamesLocked: Boolean,
+    onGamesChange: (Boolean) -> Unit,
     onOpenDefaultSound: () -> Unit,
     onOpenSetup: () -> Unit,
     onBack: () -> Unit,
@@ -129,6 +133,19 @@ fun SettingsScreen(
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
+
+            SectionTitle(stringResource(R.string.settings_stopping))
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
+                Column(Modifier.weight(1f).padding(end = 12.dp)) {
+                    Text(stringResource(R.string.settings_games), style = MaterialTheme.typography.bodyLarge)
+                    Text(
+                        stringResource(if (gamesLocked) R.string.settings_games_locked else R.string.settings_games_hint),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+                Switch(checked = gamesEnabled, enabled = !gamesLocked, onCheckedChange = onGamesChange)
+            }
 
             Row(verticalAlignment = Alignment.CenterVertically) {
                 SectionTitle(stringResource(R.string.settings_music), Modifier.weight(1f))

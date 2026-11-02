@@ -3,6 +3,7 @@ package dev.rec0il.alarmdhd.model
 import kotlinx.serialization.json.Json
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class SavedDataTest {
@@ -19,6 +20,20 @@ class SavedDataTest {
         val series = store.decodeFromString<AlarmSeries>(saved)
         assertFalse(series.gradualVolume)
         assertEquals(SoundSource.Song("u", "T"), series.sound)
+    }
+
+    @Test
+    fun `settings saved by 1_0_0 still load, with games on`() {
+        val saved = """{"series":[],"setupDone":true,"defaultRunMinutes":45,"defaultSound":{"type":"default"}}"""
+        val settings = store.decodeFromString<Settings>(saved)
+        assertTrue(settings.gamesEnabled)
+        assertEquals(45, settings.defaultRunMinutes)
+    }
+
+    @Test
+    fun `games turned off survive saving`() {
+        val settings = Settings(setupDone = true, gamesEnabled = false)
+        assertEquals(settings, store.decodeFromString<Settings>(store.encodeToString(settings)))
     }
 
     @Test

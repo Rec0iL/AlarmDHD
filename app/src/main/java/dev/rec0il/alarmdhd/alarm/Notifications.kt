@@ -10,6 +10,7 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import dev.rec0il.alarmdhd.R
+import dev.rec0il.alarmdhd.data.AlarmStore
 import dev.rec0il.alarmdhd.game.MiniGameIntents
 import dev.rec0il.alarmdhd.model.AppState
 import dev.rec0il.alarmdhd.model.Planner
@@ -98,7 +99,15 @@ object Notifications {
         return NotificationCompat.Builder(context, CHANNEL_PROGRESS)
             .setSmallIcon(R.drawable.ic_alarm)
             .setContentTitle(context.getString(R.string.game_notification_title))
-            .setContentText(context.getString(R.string.game_notification_text))
+            .setContentText(
+                context.getString(
+                    if (AlarmStore.state.value.settings.gamesEnabled) {
+                        R.string.game_notification_text
+                    } else {
+                        R.string.awake_notification_text
+                    },
+                ),
+            )
             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
             .setOngoing(true)
             .setContentIntent(game)

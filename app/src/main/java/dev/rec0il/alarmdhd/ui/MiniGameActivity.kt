@@ -28,6 +28,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -55,23 +56,26 @@ import dev.rec0il.alarmdhd.alarm.RingState
 import dev.rec0il.alarmdhd.data.AlarmStore
 import dev.rec0il.alarmdhd.game.MiniGame
 import dev.rec0il.alarmdhd.game.MiniGames
+import kotlinx.coroutines.delay
 import kotlin.math.sin
 import kotlin.random.Random
 
 /**
- * Hosts a game over the lock screen. Winning is the only way to stop the day's alarms. Leaving,
- * turning the screen off or going idle goes back to ringing, so nobody falls asleep on the game.
+ * Hosts a game over the lock screen, or with games off the question whether you're really awake.
+ * Winning or answering yes is the only way to stop the day's alarms. Leaving, turning the screen off
+ * or going idle goes back to ringing, so nobody falls asleep on it.
  */
 class MiniGameActivity : ComponentActivity() {
     private val handler = Handler(Looper.getMainLooper())
     private var isDone = false
     private var fingerDown = false
     private var lastActivity = SystemClock.elapsedRealtime()
+    private var idleLimitMs = GAME_IDLE_LIMIT_MS
 
     private val idleCheck = object : Runnable {
         override fun run() {
             if (isDone) return
-            if (!fingerDown && SystemClock.elapsedRealtime() - lastActivity >= IDLE_LIMIT_MS) {
+            if (!fingerDown && SystemClock.elapsedRealtime() - lastActivity >= idleLimitMs) {
                 leave()
             } else {
                 handler.postDelayed(this, IDLE_CHECK_MS)
@@ -92,26 +96,30 @@ class MiniGameActivity : ComponentActivity() {
         enableDarkEdgeToEdge()
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
-        val game = MiniGames.pick(AlarmStore.state.value.live.lastGameId)
-        AlarmStore.update { it.copy(live = it.live.copy(lastGameId = game.id)) }
+        val state = AlarmStore.state.value
+        val game = if (state.settings.gamesEnabled) MiniGames.pick(state.live.lastGameId) else null
+        if (game != null) {
+            AlarmStore.update { it.copy(live = it.live.copy(lastGameId = game.id)) }
+        } else {
+            idleLimitMs = QUESTION_IDLE_LIMIT_MS
+        }
         val wasTest = RingState.active.value?.isTest == true
 
         setContent {
             AlarmTheme {
                 var won by remember { mutableStateOf(false) }
+                val onWin = {
+                    win()
+                    won = true
+                }
                 BackHandler(enabled = !won) { leave() }
                 Surface(color = MaterialTheme.colorScheme.background, modifier = Modifier.fillMaxSize()) {
                     if (won) {
                         Celebration(wasTest, onClose = { finish() })
+                    } else if (game != null) {
+                        GameFrame(game = game, onLeave = { leave() }, onWin = onWin)
                     } else {
-                        GameFrame(
-                            game = game,
-                            onLeave = { leave() },
-                            onWin = {
-                                win()
-                                won = true
-                            },
-                        )
+                        AwakeCheck(wasTest, onNotYet = { leave() }, onYes = onWin)
                     }
                 }
             }
@@ -167,7 +175,10 @@ class MiniGameActivity : ComponentActivity() {
     }
 
     private companion object {
-        const val IDLE_LIMIT_MS = 60_000L
+        const val GAME_IDLE_LIMIT_MS = 60_000L
+
+        /** One question needs less time than a game, so someone dozing off on it is rung again sooner. */
+        const val QUESTION_IDLE_LIMIT_MS = 30_000L
         const val IDLE_CHECK_MS = 5_000L
 
         /** Only what a person causes. Status lines read out by TalkBack don't show that anyone is awake. */
@@ -195,6 +206,46 @@ private fun GameFrame(game: MiniGame, onLeave: () -> Unit, onWin: () -> Unit) {
         }
         Spacer(Modifier.height(8.dp))
         game.Play(onWin)
+    }
+}
+
+/** How long the question ignores taps, so the second tap of a sleepy double-tap on I'm up can't answer it. */
+private const val TAP_GUARD_MS = 1_000L
+
+/** With games off, this is what I'm up asks. Yes sits high up, away from where I'm up was. */
+@Composable
+private fun AwakeCheck(wasTest: Boolean, onNotYet: () -> Unit, onYes: () -> Unit) {
+    var ready by remember { mutableStateOf(false) }
+    LaunchedEffect(Unit) {
+        delay(TAP_GUARD_MS)
+        ready = true
+    }
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.fillMaxSize().safeDrawingPadding().padding(20.dp),
+    ) {
+        Spacer(Modifier.height(48.dp))
+        Text(
+            stringResource(R.string.awake_title),
+            style = MaterialTheme.typography.displaySmall,
+            textAlign = TextAlign.Center,
+        )
+        Spacer(Modifier.height(12.dp))
+        Text(
+            stringResource(if (wasTest) R.string.awake_text_test else R.string.awake_text),
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            textAlign = TextAlign.Center,
+        )
+        Spacer(Modifier.height(32.dp))
+        Button(onClick = onYes, enabled = ready, modifier = Modifier.fillMaxWidth().height(72.dp)) {
+            Text(stringResource(R.string.awake_yes), style = MaterialTheme.typography.titleMedium)
+        }
+        Spacer(Modifier.weight(1f))
+        OutlinedButton(onClick = onNotYet, enabled = ready, modifier = Modifier.fillMaxWidth().height(72.dp)) {
+            Text(stringResource(R.string.awake_not_yet), style = MaterialTheme.typography.titleMedium)
+        }
+        Spacer(Modifier.height(8.dp))
     }
 }
 

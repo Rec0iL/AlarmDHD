@@ -66,6 +66,7 @@ fun EditorScreen(
     locked: Boolean,
     runMinutes: Int,
     defaultSound: SoundSource,
+    gamesEnabled: Boolean,
     onChange: (AlarmSeries) -> Unit,
     onSave: () -> Unit,
     onDelete: () -> Unit,
@@ -103,7 +104,10 @@ fun EditorScreen(
                     colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
                     modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp),
                 ) {
-                    Text(stringResource(R.string.editor_locked), modifier = Modifier.padding(16.dp))
+                    Text(
+                        stringResource(if (gamesEnabled) R.string.editor_locked else R.string.editor_locked_no_game),
+                        modifier = Modifier.padding(16.dp),
+                    )
                 }
             }
 
@@ -127,7 +131,7 @@ fun EditorScreen(
                 Column(Modifier.weight(1f).padding(end = 12.dp)) {
                     Text(stringResource(R.string.editor_no_end), style = MaterialTheme.typography.bodyLarge)
                     Text(
-                        stringResource(R.string.editor_no_end_hint),
+                        stringResource(if (gamesEnabled) R.string.editor_no_end_hint else R.string.editor_no_end_hint_no_game),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -160,7 +164,7 @@ fun EditorScreen(
                 onChange = { onChange(draft.copy(snoozeMinutes = it)) },
             )
 
-            RingPreviewBlock(draft)
+            RingPreviewBlock(draft, gamesEnabled)
 
             SectionTitle(stringResource(R.string.editor_days))
             DayPicker(draft, enabled = !locked, onChange = onChange)
@@ -284,7 +288,7 @@ private fun TimeTile(label: String, value: String, enabled: Boolean, onClick: ()
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun RingPreviewBlock(draft: AlarmSeries) {
+private fun RingPreviewBlock(draft: AlarmSeries, gamesEnabled: Boolean) {
     val context = LocalContext.current
     val preview = Planner.previewMinutes(draft, PREVIEW_LIMIT)
     val count = preview.count
@@ -295,7 +299,7 @@ private fun RingPreviewBlock(draft: AlarmSeries) {
         Column(Modifier.padding(16.dp)) {
             Text(
                 if (count == null) {
-                    stringResource(R.string.editor_preview_open)
+                    stringResource(if (gamesEnabled) R.string.editor_preview_open else R.string.editor_preview_open_no_game)
                 } else {
                     pluralStringResource(R.plurals.editor_preview_count, count, count)
                 },

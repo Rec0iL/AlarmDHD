@@ -75,6 +75,8 @@ data class Settings(
     /** How long after its start a new run ends, until the user picks a different end. */
     val defaultRunMinutes: Int = 30,
     val defaultSound: SoundSource = SoundSource.DefaultAlarm,
+    /** Off: I'm up asks once whether you're really awake instead of opening a game. */
+    val gamesEnabled: Boolean = true,
 ) {
     /** What a run's sound setting actually plays. */
     fun resolve(sound: SoundSource): SoundSource = if (sound == SoundSource.DefaultAlarm) defaultSound else sound

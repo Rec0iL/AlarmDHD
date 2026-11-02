@@ -110,7 +110,7 @@ fun HomeScreen(
                 item { NextAlarm(due.at, now) }
             }
             if (state.settings.series.isEmpty()) {
-                item { EmptyState() }
+                item { EmptyState(state.settings.gamesEnabled) }
             }
             items(state.settings.series, key = { it.id }) { series ->
                 SeriesCard(
@@ -216,12 +216,12 @@ private fun NextAlarm(at: Long, now: Long) {
 }
 
 @Composable
-private fun EmptyState() {
+private fun EmptyState(gamesEnabled: Boolean) {
     Column(Modifier.padding(horizontal = 4.dp, vertical = 32.dp)) {
         Text(stringResource(R.string.home_empty_title), style = MaterialTheme.typography.headlineSmall)
         Spacer(Modifier.height(8.dp))
         Text(
-            stringResource(R.string.home_empty_text),
+            stringResource(if (gamesEnabled) R.string.home_empty_text else R.string.home_empty_text_no_game),
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -279,7 +279,7 @@ private fun SeriesCard(
             }
             if (running) {
                 Text(
-                    stringResource(R.string.home_locked),
+                    stringResource(if (state.settings.gamesEnabled) R.string.home_locked else R.string.home_locked_no_game),
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.primary,
                     modifier = Modifier.padding(top = 4.dp),

@@ -22,6 +22,7 @@ import androidx.lifecycle.compose.LifecycleResumeEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.rec0il.alarmdhd.alarm.AlarmEngine
 import dev.rec0il.alarmdhd.alarm.RingService
+import dev.rec0il.alarmdhd.alarm.RingState
 import dev.rec0il.alarmdhd.data.AlarmStore
 import dev.rec0il.alarmdhd.model.AlarmSeries
 import dev.rec0il.alarmdhd.model.Planner
@@ -83,6 +84,7 @@ class MainActivity : ComponentActivity() {
 private fun AppContent() {
     val context = LocalContext.current
     val state by AlarmStore.state.collectAsStateWithLifecycle()
+    val ring by RingState.active.collectAsStateWithLifecycle()
     var stack by rememberSaveable(saver = stackSaver) { mutableStateOf(listOf<Screen>(Screen.Home)) }
     var problems by remember { mutableStateOf(SetupChecks.failing(context)) }
     // Restarted by any state change, so "next alarm" never shows one that has just gone off.
@@ -142,6 +144,7 @@ private fun AppContent() {
                 ?.let { Planner.isRunning(state, it, now, AlarmEngine.zone()) } == true,
             runMinutes = state.settings.defaultRunMinutes,
             defaultSound = state.settings.defaultSound,
+            gamesEnabled = state.settings.gamesEnabled,
             onChange = { draft -> stack = stack.dropLast(1) + screen.copy(draft = draft) },
             onSave = {
                 AlarmEngine.saveSeries(context, screen.draft)
@@ -179,6 +182,13 @@ private fun AppContent() {
             defaultSound = state.settings.defaultSound,
             onRunMinutesChange = { minutes ->
                 AlarmStore.update { it.copy(settings = it.settings.copy(defaultRunMinutes = minutes)) }
+            },
+            gamesEnabled = state.settings.gamesEnabled,
+            // Like the editor's lock: swapping the game for one tap mid-run would be an easy way back to sleep.
+            gamesLocked = state.settings.gamesEnabled &&
+                (ring != null || Planner.progress(state, now, AlarmEngine.zone()) != null),
+            onGamesChange = { enabled ->
+                AlarmStore.update { it.copy(settings = it.settings.copy(gamesEnabled = enabled)) }
             },
             onOpenDefaultSound = { push(Screen.DefaultSound) },
             onOpenSetup = { push(Screen.Setup) },

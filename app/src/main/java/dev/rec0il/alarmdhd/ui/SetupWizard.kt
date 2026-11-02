@@ -241,9 +241,16 @@ private fun MusicStep(onContinue: () -> Unit) {
 private fun TestStep(onContinue: () -> Unit) {
     val context = LocalContext.current
     var started by rememberSaveable { mutableStateOf(false) }
+    val state by AlarmStore.state.collectAsStateWithLifecycle()
     StepText(
         stringResource(R.string.setup_test_title),
-        stringResource(if (started) R.string.setup_test_started else R.string.setup_test_text),
+        stringResource(
+            when {
+                !started -> R.string.setup_test_text
+                state.settings.gamesEnabled -> R.string.setup_test_started
+                else -> R.string.setup_test_started_no_game
+            },
+        ),
     )
     PrimaryAction(stringResource(R.string.setup_test_action), onClick = {
         started = true
