@@ -36,7 +36,7 @@ Say you start at 07:00, ring every 5 minutes and snooze for 7:
 
 Snoozing never pushes anything back. It only adds rings, so they get closer together.
 
-- **Stopping takes a game.** There are 10 of them, about 30 seconds each, with no timer and no way to lose. If you wander off or fall asleep on it, the alarm comes back. Don't want games? Turn them off in Settings, and I'm up asks once whether you're really awake instead.
+- **Stopping takes a game.** There are 10 of them, about 30 seconds each, with no timer and no way to lose. If you wander off or fall asleep on it, the alarm comes back. Don't want games? **Turn them off in Settings**, and I'm up asks once whether you're really awake instead.
 - **No end time, if you want.** A run can keep going until you win the game. As a safety net it gives up after 12 hours.
 - **Your own music.** One song, an `.m3u` playlist, a playlist you pick in the app, or a random song from a folder. It all plays at alarm volume, so a muted phone still wakes you.
 - **It never just stays silent.** If your song is gone, it tries your other songs, then the system alarm tone, then a tone built into the app, and tells you what happened.
